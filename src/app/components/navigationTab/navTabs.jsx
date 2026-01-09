@@ -15,12 +15,15 @@ import {
 } from "@dnd-kit/sortable";
 import { handleDragEnd } from "@/app/utils/handleDragEnd";
 import { usePathname } from "next/navigation";
+import { useResizer } from "@/app/hooks/resizer.hook";
 
 export default function NavTabs() {
   const pathName = usePathname();
   const [navTabs, setNavTabs] = useState(createNavTabs());
   const sensors = useSensors(useSensor(PointerSensor));
 
+  const [visibleTab, setVisibleTab] = useState(10);
+  const displayesItems = navTabs.slice(0, visibleTab);
   return (
     <DndContext
       sensors={sensors}
@@ -32,7 +35,7 @@ export default function NavTabs() {
         strategy={horizontalListSortingStrategy}
       >
         <div className="flex flex-wrap">
-          {navTabs.map((tab) => {
+          {displayesItems.map((tab) => {
             const isActive = pathName === tab.url;
 
             return (

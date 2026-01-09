@@ -1,12 +1,7 @@
 "use client";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import {
-  activeClass,
-  baseClass,
-  hoverClass,
-  traitClass,
-} from "./stylesSortableBar";
+import { activeClass, baseClass, hoverClass, traitClass } from "./stylesNavTab";
 import Link from "next/link";
 import Image from "next/image";
 
