@@ -1,7 +1,7 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { createNavTabs } from "@/app/utils/navTabsLinks/navLinksTabs";
-import { SortableTab } from "./draggableTab";
+import { DraggableTab } from "./draggableTab";
 import {
   DndContext,
   closestCenter,
@@ -35,7 +35,9 @@ export default function NavTabs() {
           {navTabs.map((tab) => {
             const isActive = pathName === tab.url;
 
-            return <SortableTab key={tab.name} isActive={isActive} tab={tab} />;
+            return (
+              <DraggableTab key={tab.name} isActive={isActive} tab={tab} />
+            );
           })}
         </div>
       </SortableContext>

@@ -1,18 +1,19 @@
 "use client";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import Link from "next/link";
-import Image from "next/image";
 import {
   activeClass,
   baseClass,
   hoverClass,
   traitClass,
 } from "./stylesSortableBar";
+import Link from "next/link";
+import Image from "next/image";
 
-export const SortableTab = ({ tab, isActive }) => {
-  const { attributes, listeners, setNodeRef, transform, transition } =
-    useSortable({ id: tab.name });
+export const DraggableTab = ({ tab, isActive }) => {
+  const { listeners, setNodeRef, transform, transition } = useSortable({
+    id: tab.name,
+  });
 
   const style = {
     transform: CSS.Transform.toString(transform),
@@ -22,7 +23,6 @@ export const SortableTab = ({ tab, isActive }) => {
   return (
     <Link
       ref={setNodeRef}
-      {...attributes}
       {...listeners}
       href={tab.url}
       className={`${baseClass} ${isActive ? activeClass : hoverClass}`}
